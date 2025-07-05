@@ -1,17 +1,28 @@
 import 'package:flutter/material.dart';
 import 'package:meals/models/meal.dart';
-import 'package:meals/non_screen_widgets/meal_item.dart'; // this file is created to add meals to go to after tapping on the category items
+import 'package:meals/non_screen_widgets/meal_item.dart';
+import 'package:meals/screen_widgets/meal_detail_screen.dart'; // this file is created to add meals to go to after tapping on the category items
 
 class MealsScreen extends StatelessWidget {
   const MealsScreen({super.key, required this.title, required this.meals});
   final String title;
   final List<Meal> meals;
 
+  void selectMeal(BuildContext context,Meal meal){
+    Navigator.of(context).push(MaterialPageRoute(builder: (context) => MealDetailsScreen(meal:meal),)); 
+  }
+
   @override
   Widget build(context) {
     Widget content = ListView.builder(
       itemCount: meals.length,
-      itemBuilder: (context, index) => MealItem(meal: meals[index]),// it builds the item , index refers to each of the meal to be built by using there index it uses meal_item file to get the data 
+      itemBuilder: (context, index) => MealItem(
+  meal: meals[index],
+  onSelectMeal: (context, meal) {
+    selectMeal(context, meal);
+  },
+),
+ // it builds the item , index refers to each of the meal to be built by using there index it uses meal_item file to get the data 
     );
 
     if (meals.isEmpty) {
