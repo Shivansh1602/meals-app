@@ -24,9 +24,7 @@ class CategoriesScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(title: Text("PICK OUR CATEGORY")),
-      body: GridView(
+    return GridView(
         //body is the main content of the screen and using gridveiw so to display categories as grid
         padding: EdgeInsets.all(12),
         gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
@@ -46,7 +44,7 @@ class CategoriesScreen extends StatelessWidget {
               // how every category is to be displayed on the screen with all the customization done in categoryGriditem file
             ),
         ],
-      ),
-    );
+      );
+    
   }
 }
