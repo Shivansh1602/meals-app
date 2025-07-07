@@ -1,13 +1,18 @@
 
 import 'package:flutter/material.dart';
 import 'package:meals/data/dummy_data.dart';
+import 'package:meals/models/meal.dart';
 import 'package:meals/non_screen_widgets/category_grid_item.dart';
 import 'package:meals/screen_widgets/meals_screen.dart';
 import 'package:meals/models/category.dart';
 
+
 class CategoriesScreen extends StatelessWidget {
   // This is the first screen displaying categories
-  const CategoriesScreen({super.key});
+  const CategoriesScreen({super.key,required this.onToggleFavourites});
+
+      final void Function(Meal meal) onToggleFavourites;
+
 
   void _selectcategory(BuildContext context, Category category)
   // creating a method that changes the screen after tapping on the categories
@@ -17,7 +22,7 @@ class CategoriesScreen extends StatelessWidget {
     //Navigator.push(context, route)
     Navigator.of(context).push(
       MaterialPageRoute(
-        builder: (context) => MealsScreen(title: category.title, meals: filterMeals),
+        builder: (context) => MealsScreen(title: category.title, meals: filterMeals,onToggleFavourites: onToggleFavourites,),
       ),
     );
   }
