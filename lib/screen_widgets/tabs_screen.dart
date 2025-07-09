@@ -108,14 +108,14 @@ class _TabsScreenState extends State<TabsScreen> {
       availableMeals: availableMeals,
       onToggleFavourites: _toggleMealFavouritesStatus,
     );
-    var activePageTitle = 'categories';
+    var activePageTitle = 'Categories';
 
     if (_selectPageIndex == 1) {
       activePage = MealsScreen(
         meals: _favouriteMeals,
         onToggleFavourites: _toggleMealFavouritesStatus,
       );
-      activePageTitle = 'your Favourites';
+      activePageTitle = 'Your Favourites';
     }
 
     return Scaffold(
